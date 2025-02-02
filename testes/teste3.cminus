@@ -1,0 +1,3 @@
+int x;
+float y;
+int x; // Declaração duplicada (deve gerar um erro semântico)
