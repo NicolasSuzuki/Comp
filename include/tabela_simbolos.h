@@ -7,7 +7,6 @@
 
 #define TAMANHO_TABELA 100
 
-// Estrutura para representar uma entrada na tabela de símbolos
 typedef struct {
     char nome_id[50];      // Nome do identificador
     char escopo[50];       // Escopo do identificador
@@ -17,13 +16,11 @@ typedef struct {
     int num_linhas;        // Número de linhas
 } EntradaTabela;
 
-// Estrutura para a tabela de símbolos
 typedef struct {
     EntradaTabela entradas[TAMANHO_TABELA];
     int tamanho;
 } TabelaSimbolos;
 
-// Funções para manipular a tabela de símbolos
 void inicializar_tabela(TabelaSimbolos *tabela);
 int hash(char *nome);
 void inserir_tabela(TabelaSimbolos *tabela, char *nome_id, char *escopo, char *tipo_id, char *tipo_dado, int linha);

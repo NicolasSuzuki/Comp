@@ -1,18 +1,16 @@
 #include <stdio.h>
-#include <ctype.h>  // Para isspace, isalpha, isalnum, isdigit
-#include <string.h> // Para strcmp
+#include <ctype.h> 
+#include <string.h>
 #include "analisador_lexico.h"
 #include "tokens.h"
 
-// Variável global para o arquivo de entrada
 FILE *arquivo;
 
-// Função para obter o próximo token
 int obter_token(char *lexema, int *linha, int *coluna) {
     char caractere;
     int i = 0;
 
-    // Ignorar espaços em branco
+    // Ignorar espaços em branco e comentários
     while ((caractere = fgetc(arquivo)) != EOF && isspace(caractere)) {
         if (caractere == '\n') {
             (*linha)++;
@@ -38,6 +36,7 @@ int obter_token(char *lexema, int *linha, int *coluna) {
         // Verificar se é uma palavra-chave
         if (strcmp(lexema, "int") == 0) return TOKEN_INT;
         if (strcmp(lexema, "float") == 0) return TOKEN_FLOAT;
+        if (strcmp(lexema, "return") == 0) return TOKEN_RETURN;
         return TOKEN_IDENTIFICADOR;
     }
 
@@ -58,7 +57,6 @@ int obter_token(char *lexema, int *linha, int *coluna) {
     return caractere; // Retorna o próprio caractere como token
 }
 
-// Função para inicializar o analisador léxico
 void inicializar_lexico(FILE *arquivo_entrada) {
     arquivo = arquivo_entrada;
 }

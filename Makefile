@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Iinclude
-SRC = src/main.c src/analisador_lexico.c src/analisador_sintatico.c src/analisador_semantico.c src/tabela_simbolos.c src/utils.c
+SRC = src/main.c src/analisador_lexico.c src/analisador_sintatico.c src/analisador_semantico.c src/tabela_simbolos.c
 OBJ = $(SRC:.c=.o)
 TARGET = compilador
 

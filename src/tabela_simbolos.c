@@ -1,6 +1,5 @@
 #include "tabela_simbolos.h"
 
-// Inicializa a tabela de símbolos
 void inicializar_tabela(TabelaSimbolos *tabela) {
     tabela->tamanho = 0;
 }
@@ -10,12 +9,11 @@ int hash(char *nome) {
     unsigned long hash = 5381;
     int c;
     while ((c = *nome++)) {
-        hash = ((hash << 5) + hash) + c; // hash * 33 + c
+        hash = ((hash << 5) + hash) + c; 
     }
     return hash % TAMANHO_TABELA;
 }
 
-// Insere uma entrada na tabela de símbolos
 void inserir_tabela(TabelaSimbolos *tabela, char *nome_id, char *escopo, char *tipo_id, char *tipo_dado, int linha) {
     int indice = hash(nome_id);
     EntradaTabela *entrada = &tabela->entradas[indice];
@@ -28,7 +26,6 @@ void inserir_tabela(TabelaSimbolos *tabela, char *nome_id, char *escopo, char *t
     tabela->tamanho++;
 }
 
-// Busca uma entrada na tabela de símbolos
 EntradaTabela* buscar_tabela(TabelaSimbolos *tabela, char *nome_id, char *escopo) {
     int indice = hash(nome_id);
     EntradaTabela *entrada = &tabela->entradas[indice];
@@ -39,7 +36,6 @@ EntradaTabela* buscar_tabela(TabelaSimbolos *tabela, char *nome_id, char *escopo
     return NULL;
 }
 
-// Imprime a tabela de símbolos
 void imprimir_tabela(TabelaSimbolos *tabela) {
     printf("# TABELA DE SÍMBOLOS\n");
     printf("Nome_ID;Escopo;Tipo_ID;Tipo_dado;Linhas\n");
